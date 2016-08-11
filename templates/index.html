@@ -3,7 +3,9 @@
 <!doctype html>
 <title>Rental Cities</title>
 <body>
+  <h1>City Rental Data</h1>
+  <p>Enter a city you'd like rental data on.</p>
   <form action="{{ url_for('get_index') }}" method="post">
-            <input type="text" name="city">
+    <input type="text" name="city">
   </form>
 </body>
