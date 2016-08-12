@@ -16,13 +16,13 @@ mongo = PyMongo(app, config_prefix='MONGO')
 def get_index():
     form = CityForm(csrf_enabled=False)
     if form.validate_on_submit():
-        city = form['city']
-        return render_template('city.html', city=city)
+        city = form.city.data
+        return redirect(url_for('get_data', city=city))
     else:
         return render_template('index.html')
 
 
-@app.route('/db')
-def get_data():
-    result = mongo.db.monthly_rent_average.find_one_or_404({'city': 'Seattle'})
-    print result
+@app.route('/<city>')
+def get_data(city):
+    result = mongo.db.monthly_rent_average.find_one_or_404({'city': city})
+    return render_template('city.html', city=city)
