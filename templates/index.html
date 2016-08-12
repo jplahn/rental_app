@@ -1,11 +1,12 @@
-{# rental_app/templates/city.html #}
-
-<!doctype html>
-<title>Rental Cities</title>
-<body>
-  <h1>City Rental Data</h1>
-  <p>Enter a city you'd like rental data on.</p>
-  <form action="{{ url_for('get_index') }}" method="post">
-    <input type="text" name="city">
-  </form>
-</body>
+{% extends "layout.html" %}
+{% block title %}Welcome{% endblock %}
+{% block content %}
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h1>City Rental Data <small>Enter a city you'd like rental data on</small></h1>
+        {% include 'partials/city_form.html' %}
+      </div>
+    </div>
+  </div>
+{% endblock %}
