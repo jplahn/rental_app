@@ -1,3 +1,5 @@
+import os
+
 from flask import Flask, request, render_template, redirect, url_for
 from forms import CityForm
 from flask.ext.pymongo import PyMongo
@@ -26,3 +28,7 @@ def get_index():
 def get_data(city):
     result = mongo.db.monthly_rent_average.find_one_or_404({'city': city})
     return render_template('city.html', city=city)
+
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port)
