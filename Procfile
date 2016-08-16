@@ -1,1 +1,1 @@
-web: python rental_app/app.py
+web: python app.py
