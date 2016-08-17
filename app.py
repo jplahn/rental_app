@@ -1,10 +1,11 @@
 import os
 
-from flask import Flask, request, render_template, redirect, url_for
+from flask import Flask, flash, request, render_template, redirect, url_for
 from forms import CityForm
 from flask.ext.pymongo import PyMongo
 
 app = Flask(__name__)
+app.secret_key = "eventually something from config"
 
 # configure MongoDB values
 app.config['MONGO_HOST'] = 'ds153715.mlab.com'
@@ -26,8 +27,12 @@ def get_index():
 
 @app.route('/<city>')
 def get_data(city):
-    result = mongo.db.monthly_rent_average.find_one_or_404({'city': city})
-    return render_template('city.html', city=city)
+    result = mongo.db.monthly_rent_average.find_one({'city': city})
+    if result:
+        return render_template('city.html', city=city)
+    else:
+        flash('Oops! City doesn\'t exist in the DB yet!')
+        return render_template('index.html')
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
