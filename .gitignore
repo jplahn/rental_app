@@ -88,3 +88,6 @@ activate/
 
 # Rope project settings
 .ropeproject
+
+# Flask config
+config.py

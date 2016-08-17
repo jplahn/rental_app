@@ -5,14 +5,9 @@ from forms import CityForm
 from flask.ext.pymongo import PyMongo
 
 app = Flask(__name__)
-app.secret_key = "eventually something from config"
+app.config.from_object('config')
 
 # configure MongoDB values
-app.config['MONGO_HOST'] = 'ds153715.mlab.com'
-app.config['MONGO_PORT'] = '53715'
-app.config['MONGO_DBNAME'] = 'rental_app'
-app.config['MONGO_USERNAME'] = 'test'
-app.config['MONGO_PASSWORD'] = 'test'
 mongo = PyMongo(app, config_prefix='MONGO')
 
 @app.route('/', methods=['POST', 'GET'])

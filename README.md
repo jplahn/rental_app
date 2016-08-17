@@ -11,3 +11,18 @@ Comparing rental cities and stuff.
 ## Notes
 * Treat Issues as a backlog of sorts
 * Better architecture document to come# Some sort of website
+
+## Sample Config
+
+```python
+# config.py
+
+SECRET_KEY = 'BlahBlahBlah'
+
+# Mongo DB Configuration
+MONGO_HOST = '12345.mlab.com'
+MONGO_PORT = '53715'
+MONGO_DBNAME = 'rental_app'
+MONGO_USERNAME = 'test'
+MONGO_PASSWORD = 'test'
+```
