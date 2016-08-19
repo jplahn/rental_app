@@ -1,11 +1,13 @@
 import os
 
 from flask import Flask, flash, request, render_template, redirect, url_for
+from flask_assets import Environment
 from forms import CityForm
-from flask.ext.pymongo import PyMongo
+from flask_pymongo import PyMongo
 
 app = Flask(__name__)
 app.config.from_object('config')
+assets = Environment(app)
 
 # configure MongoDB values
 mongo = PyMongo(app, config_prefix='MONGO')

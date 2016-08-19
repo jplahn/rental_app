@@ -6,6 +6,10 @@ __pycache__/
 # C extensions
 *.so
 
+# Ignore bundled assets
+static/js/app_packed.js
+static/css/app_packed.css
+
 .DS_STORE
 
 # Distribution / packaging
