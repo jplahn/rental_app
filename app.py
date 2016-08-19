@@ -12,10 +12,6 @@ assets = Environment(app)
 # configure MongoDB values
 mongo = PyMongo(app, config_prefix='MONGO')
 
-@app.route('/assets/<resource>/<path:path>')
-def send_assets(resource, path):
-    return send_from_directory('assets/' + resource, path)
-
 @app.route('/', methods=['POST', 'GET'])
 def get_index():
     form = CityForm(csrf_enabled=False)
