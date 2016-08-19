@@ -1,5 +1,38 @@
 # Some sort of website
-Comparing rental cities and stuff.
+Comparing rental cities and stuff
+
+## Setup
+- Follow these instructions - http://flask.pocoo.org/docs/0.11/installation/
+- Create a `.env` file in the application root
+- Put the following in that - 
+
+```python
+# .env
+source venv/bin/activate
+
+export SECRET_KEY='get_this_from_repo_owner'
+
+# Mongo DB Configuration
+export MONGO_HOST='get_this_from_repo_owner'
+export MONGO_PORT='get_this_from_repo_owner'
+export MONGO_DBNAME='get_this_from_repo_owner'
+export MONGO_USERNAME='get_this_from_repo_owner'
+export MONGO_PASSWORD='get_this_from_repo_owner'
+```
+- Run the following in your terminal
+
+### BASH Users
+```bash
+echo "source `which activate.sh`" >> ~/.bashrc
+source ~/.bashrc
+```
+### ZSH Users
+```bash
+echo "source `which activate.sh`" >> ~/.zshrc
+source ~/.zshrc
+```
+- Move out of the application directory and get back in to initialize the ENV variables
+- Run the application `flask run`
 
 ## Basic Flow 
 1. User hits the homepage and are able to select a city they want to view rental data for. Right now I have a text box for city selection, probably need to make that a drop down list initially since supported cities will likely be limited (since we will have to manually populate a DB due to lack of available APIs)
@@ -11,18 +44,3 @@ Comparing rental cities and stuff.
 ## Notes
 * Treat Issues as a backlog of sorts
 * Better architecture document to come# Some sort of website
-
-## Sample Config
-
-```python
-# config.py
-
-SECRET_KEY = 'BlahBlahBlah'
-
-# Mongo DB Configuration
-MONGO_HOST = '12345.mlab.com'
-MONGO_PORT = '53715'
-MONGO_DBNAME = 'rental_app'
-MONGO_USERNAME = 'test'
-MONGO_PASSWORD = 'test'
-```
