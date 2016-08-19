@@ -1,6 +1,6 @@
 import os
 
-from flask import Flask, flash, request, render_template, redirect, url_for
+from flask import Flask, flash, request, render_template, redirect, url_for, send_from_directory
 from forms import CityForm
 from flask.ext.pymongo import PyMongo
 
@@ -9,6 +9,10 @@ app.config.from_object('config')
 
 # configure MongoDB values
 mongo = PyMongo(app, config_prefix='MONGO')
+
+@app.route('/assets/<resource>/<path:path>')
+def send_assets(resource, path):
+    return send_from_directory('assets/' + resource, path)
 
 @app.route('/', methods=['POST', 'GET'])
 def get_index():
