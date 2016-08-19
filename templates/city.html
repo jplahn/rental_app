@@ -4,16 +4,12 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-        <h1>
-        {% if city %}
-          Great! You selected <em class="text-success">{{ city }}</em>.
-        {% else %}
-          You didn't select a city!
-        {% endif %}
-        </h1>
-        <hr>
-        <h3>Go ahead, try another city</h3>
-        {% include 'partials/city_form.html' %}
+        <div class="well">
+          Data for <em class="text-success">{{city}}</em> will be available soon!
+        </div>
+        <hr/>
+        <h4>Go ahead, try another city</h4>
+        {% include 'partials/_city_form.html' %}
       </div>
     </div>
   </div>

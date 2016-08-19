@@ -10,17 +10,8 @@
     {% endblock %}
   </head>
   <body>
-    <div class="container">
-      {% with messages = get_flashed_messages() %}
-        {% if messages %}
-         <div class="alert alert-danger top-buffer">
-            {% for message in messages %}
-              <p><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> {{ message }}</p>
-            {% endfor %}
-          </div>
-        {% endif %}
-      {% endwith %}
-    </div>
+    {% include 'partials/_header.html' %}
+    {% include 'partials/_flash_messages.html' %}
     <div class="content">
       <!-- Each view's content will come here -->
       {% block content %}{% endblock %}
