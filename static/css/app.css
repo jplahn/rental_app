@@ -1,7 +1,45 @@
+/* Common Styles
+-------------------- */
 .top-buffer {
   margin-top: 10px;
 }
-
-.logo {
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 50px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
   height: 50px;
+  background-color: #f5f5f5;
+}
+/* Set padding top for the first container in body */
+body > .container {
+  padding-top: 50px;
+}
+/* Header Styles
+------------------- */
+.navbar-brand {
+  padding: 0;
+}
+.logo {
+  height: 40px;
+  margin: 5px 10px 0 10px;
+}
+.logo-text {
+  margin: 15px 15px 0 0;
+}
+
+/* Footer styles
+------------------- */
+.footer {
+  padding-top: 15px;
 }
