@@ -22,14 +22,8 @@ export MONGO_PASSWORD='get_this_from_repo_owner'
 # App Config
 export FLASK_DEBUG=True
 export ASSETS_DEBUG=True
+export FLASK_APP=app.py
 ```
-- Run the following in your terminal
-
-### Handling assets
-- We are using https://flask-assets.readthedocs.io/en/latest/ to manage our assets
-- Define the assets required in the layout file. It uses relative path from `/static` folder
-- Turn on Assets Debug if required using configuration in your .env file
-- Access images directly from the `/static/img` folder path
 
 ### BASH Users
 ```bash
@@ -43,6 +37,13 @@ source ~/.zshrc
 ```
 - Move out of the application directory and get back in to initialize the ENV variables
 - Run the application `flask run`
+
+## Handling assets
+- We are using https://flask-assets.readthedocs.io/en/latest/ to manage our assets
+- Define the assets required in the layout file. It uses relative path from `/static` folder
+- Turn on Assets Debug if required using configuration in your .env file
+- Access images directly from the `/static/img` folder path
+- Run the following in your terminal
 
 ## Basic Flow
 1. User hits the homepage and are able to select a city they want to view rental data for. Right now I have a text box for city selection, probably need to make that a drop down list initially since supported cities will likely be limited (since we will have to manually populate a DB due to lack of available APIs)
