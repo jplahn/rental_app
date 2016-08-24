@@ -23,6 +23,12 @@ export MONGO_PASSWORD='get_this_from_repo_owner'
 export FLASK_DEBUG=True
 export ASSETS_DEBUG=True
 export FLASK_APP=app.py
+
+# Auth0 Config
+export AUTH0_CLIENT_SECRET='your_client_secret'
+export AUTH0_CLIENT_ID='your_client_id'
+export AUTH0_DOMAIN='your_domain.auth0.com'
+export AUTH0_CALLBACK_URL='http://localhost:5000'
 ```
 
 ### BASH Users

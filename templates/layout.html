@@ -27,7 +27,14 @@
     <!-- Bundle JS files -->
     {% assets filters="jsmin", output="js/app_packed.js",
         "js/app.js" %}
-      <script type="text/javascript" src="{{ ASSET_URL }}"></script>
+    <script type="text/javascript" src="{{ ASSET_URL }}"></script>
+    <!-- Auth0 Authentication -->
+    <script src="https://cdn.auth0.com/js/lock/10.0/lock.min.js"></script>
+    <script>
+        var AUTH0_CLIENT_ID = '{{env.AUTH0_CLIENT_ID}}';
+        var AUTH0_DOMAIN = '{{env.AUTH0_DOMAIN}}';
+        var AUTH0_CALLBACK_URL = '{{env.AUTH0_CALLBACK_URL if env.AUTH0_CALLBACK_URL else "http://localhost:5000/callback" }}';
+    </script>
     {% endassets %}
   </body>
 </html>
