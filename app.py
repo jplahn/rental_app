@@ -46,7 +46,7 @@ def get_index():
     if request.method == 'POST':
         if form.validate_on_submit():
             city = form.city.data
-            return redirect(url_for('get_data', city=city))
+            return redirect(url_for('get_data', city=city, env=env))
         else:
             flash('Please fill in the required details', 'danger')
 
@@ -58,10 +58,10 @@ def get_data(city):
     result = mongo.db.monthly_rent_average.find_one({'city': city})
     if result:
         flash('Alright alright alright, city ' + city + ' found!', 'success')
-        return render_template('city.html', city=city)
+        return render_template('city.html', city=city, env=env)
     else:
         flash('Oops! City ' + city + ' doesn\'t exist in our DB yet!', 'danger')
-        return render_template('index.html')
+        return render_template('index.html', env=env)
 
 @app.route('/callback')
 def callback_handling():
