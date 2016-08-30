@@ -14,7 +14,7 @@ from forms import CityForm
 from functools import wraps
 from werkzeug.local import LocalProxy
 
-# Logging
+# define logfile name 
 LOG_FILENAME = 'rental_app.log'
 
 app = Flask(__name__)
@@ -55,7 +55,6 @@ def get_index():
             flash('Please fill in the required details', 'danger')
 
     return render_template('index.html', form=form, env=env)
-
 
 @app.route('/<city>')
 def get_data(city):
@@ -100,14 +99,16 @@ def get_account(f):
 
 if __name__ == "__main__":
     # Create log files up to 10MB (with backup) then rotate the file
-    handler = logging.handlers.RotatingFileHandler(LOG_NAME, maxBytes=10240, backupCount=1)
+    handler = logging.handlers.RotatingFileHandler(LOG_FILENAME, maxBytes=10240, backupCount=1)
     handler.setLevel(logging.WARNING)
     # File logging timestamp from Flask documentation
-    handler.setFormatter(Formatter(
+    handler.setFormatter(logging.Formatter(
     '%(asctime)s %(levelname)s: %(message)s '
     '[in %(pathname)s:%(lineno)d]'))
 
     app.logger.addHandler(handler)
+    app.logger.warning('WARNING test')
+    app.logger.error('ERROR test')
 
     port = int(os.environ.get("PORT", 5000))
     app.run(host='0.0.0.0', port=port)
