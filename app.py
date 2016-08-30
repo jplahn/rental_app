@@ -1,5 +1,6 @@
-
+# -*- coding: utf-8 -*- 
 import json
+import logging
 import os
 import requests
 
@@ -16,6 +17,9 @@ from werkzeug.local import LocalProxy
 app = Flask(__name__)
 app.config.from_object('config')
 assets = Environment(app)
+
+# define logfile name 
+logfile = app.config['APP_LOG_FILENAME']
 
 # configure MongoDB values
 mongo = PyMongo(app, config_prefix='MONGO')
@@ -51,7 +55,6 @@ def get_index():
             flash('Please fill in the required details', 'danger')
 
     return render_template('index.html', form=form, env=env)
-
 
 @app.route('/<city>')
 def get_data(city):
@@ -95,5 +98,17 @@ def get_account(f):
     return "You're authenticated!"
 
 if __name__ == "__main__":
+    # Create log files up to 10MB (with backup of prior logs) then rotate the file
+    handler = logging.handlers.RotatingFileHandler(logfile, maxBytes=10240, backupCount=10)
+    handler.setLevel(logging.WARNING)
+    # File logging timestamp from Flask documentation
+    handler.setFormatter(logging.Formatter(
+    '%(asctime)s %(levelname)s: %(message)s '
+    '[in %(pathname)s:%(lineno)d]'))
+
+    app.logger.addHandler(handler)
+    app.logger.warning('WARNING test')
+    app.logger.error('ERROR test')
+
     port = int(os.environ.get("PORT", 5000))
     app.run(host='0.0.0.0', port=port)
