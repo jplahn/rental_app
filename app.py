@@ -22,7 +22,7 @@ assets = Environment(app)
 logfile = app.config['APP_LOG_FILENAME']
 
 # configure MongoDB values
-#mongo = PyMongo(app, config_prefix='MONGO')
+mongo = PyMongo(app, config_prefix='MONGO')
 
 # authentication annotation
 current_user = LocalProxy(lambda: _request_ctx_stack.top.current_user)
