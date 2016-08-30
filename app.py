@@ -14,9 +14,6 @@ from forms import CityForm
 from functools import wraps
 from werkzeug.local import LocalProxy
 
-# define logfile name 
-LOG_FILENAME = 'rental_app.log'
-
 app = Flask(__name__)
 app.config.from_object('config')
 assets = Environment(app)
@@ -25,7 +22,7 @@ assets = Environment(app)
 logfile = app.config['APP_LOG_FILENAME']
 
 # configure MongoDB values
-mongo = PyMongo(app, config_prefix='MONGO')
+#mongo = PyMongo(app, config_prefix='MONGO')
 
 # authentication annotation
 current_user = LocalProxy(lambda: _request_ctx_stack.top.current_user)
