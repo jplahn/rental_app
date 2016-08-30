@@ -17,3 +17,6 @@ AUTH0_CLIENT_SECRET = bool(os.environ.get('AUTH0_CLIENT_SECRET'))
 AUTH0_CLIENT_ID= bool(os.environ.get('AUTH0_CLIENT_ID'))
 AUTH0_DOMAIN = bool(os.environ.get('AUTH0_DOMAIN'))
 AUTH0_CALLBACK_URL = bool(os.environ.get('AUTH0_CALLBACK_URL'))
+
+# Logging
+APP_LOG_FILENAME = 'rental_app.log'

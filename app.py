@@ -14,12 +14,12 @@ from forms import CityForm
 from functools import wraps
 from werkzeug.local import LocalProxy
 
-# define logfile name 
-LOG_FILENAME = 'rental_app.log'
-
 app = Flask(__name__)
 app.config.from_object('config')
 assets = Environment(app)
+
+# define logfile name 
+logfile = app.config['APP_LOG_FILENAME']
 
 # configure MongoDB values
 mongo = PyMongo(app, config_prefix='MONGO')
@@ -99,7 +99,7 @@ def get_account(f):
 
 if __name__ == "__main__":
     # Create log files up to 10MB (with backup of prior logs) then rotate the file
-    handler = logging.handlers.RotatingFileHandler(LOG_FILENAME, maxBytes=10240, backupCount=10)
+    handler = logging.handlers.RotatingFileHandler(logfile, maxBytes=10240, backupCount=10)
     handler.setLevel(logging.WARNING)
     # File logging timestamp from Flask documentation
     handler.setFormatter(logging.Formatter(

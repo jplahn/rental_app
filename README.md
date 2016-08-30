@@ -58,6 +58,16 @@ source ~/.zshrc
 4. The visualizations should be interactive, so they'll likely be built out with D3 (except in cases where D3 is overkill).
 5. At some point, it would be nice to have the ability to select two cities and compare them along different metrics.
 
+## Logging
+Logging currently is implemented at the app level, mongo should provide
+seperate logs. The Flask application will log at the WARNING and
+ERROR level, we can increase the scope to DEBUG/INFO while the application is
+in development if needed. The current implementation represents a minimal config that
+would be used in production.
+
+A RotatingFileHandler has been configured for the Flask application to store 
+logs up to 10MB, and keep the past 10 (inclusive) logs once the current log is filled.
+
 ## Notes
 * Treat Issues as a backlog of sorts
 * Better architecture document to come# Some sort of website
