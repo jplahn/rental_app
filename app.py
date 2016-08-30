@@ -98,8 +98,8 @@ def get_account(f):
     return "You're authenticated!"
 
 if __name__ == "__main__":
-    # Create log files up to 10MB (with backup) then rotate the file
-    handler = logging.handlers.RotatingFileHandler(LOG_FILENAME, maxBytes=10240, backupCount=1)
+    # Create log files up to 10MB (with backup of prior logs) then rotate the file
+    handler = logging.handlers.RotatingFileHandler(LOG_FILENAME, maxBytes=10240, backupCount=10)
     handler.setLevel(logging.WARNING)
     # File logging timestamp from Flask documentation
     handler.setFormatter(logging.Formatter(
