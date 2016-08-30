@@ -1,5 +1,6 @@
-
+# -*- coding: utf-8 -*- 
 import json
+import logging
 import os
 import requests
 
@@ -12,6 +13,9 @@ from flask_pymongo import PyMongo
 from forms import CityForm
 from functools import wraps
 from werkzeug.local import LocalProxy
+
+# Logging
+LOG_FILENAME = 'rental_app.log'
 
 app = Flask(__name__)
 app.config.from_object('config')
@@ -95,5 +99,15 @@ def get_account(f):
     return "You're authenticated!"
 
 if __name__ == "__main__":
+    # Create log files up to 10MB (with backup) then rotate the file
+    handler = logging.handlers.RotatingFileHandler(LOG_NAME, maxBytes=10240, backupCount=1)
+    handler.setLevel(logging.WARNING)
+    # File logging timestamp from Flask documentation
+    handler.setFormatter(Formatter(
+    '%(asctime)s %(levelname)s: %(message)s '
+    '[in %(pathname)s:%(lineno)d]'))
+
+    app.logger.addHandler(handler)
+
     port = int(os.environ.get("PORT", 5000))
     app.run(host='0.0.0.0', port=port)
