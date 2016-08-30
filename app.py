@@ -14,6 +14,9 @@ from forms import CityForm
 from functools import wraps
 from werkzeug.local import LocalProxy
 
+# define logfile name 
+LOG_FILENAME = 'rental_app.log'
+
 app = Flask(__name__)
 app.config.from_object('config')
 assets = Environment(app)
