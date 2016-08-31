@@ -97,6 +97,16 @@ def callback_handling():
 def get_account(f):
     return "You're authenticated!"
 
+@app.errorhandler(404)
+def page_not_found(e):
+    app.logger.error('Page not found: {page}'.format(page=request.path))
+    return render_template('404.html'), 404
+
+@app.errorhandler(500)
+def internal_server_error(e):
+    app.logger.error('Page not found: {page}'.format(page=request.path))
+    return render_template('500.html'), 500
+
 if __name__ == "__main__":
     # Create log files up to 10MB (with backup of prior logs) then rotate the file
     handler = logging.handlers.RotatingFileHandler(logfile, maxBytes=10240, backupCount=10)
