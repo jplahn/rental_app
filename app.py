@@ -104,7 +104,7 @@ def page_not_found(e):
 
 @app.errorhandler(500)
 def internal_server_error(e):
-    app.logger.error('Page not found: {page}'.format(page=request.path))
+    app.logger.error('Internal Server Error when accessing: {page}'.format(page=request.path))
     return render_template('500.html'), 500
 
 if __name__ == "__main__":
